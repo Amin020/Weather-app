@@ -1,0 +1,30 @@
+<div class="weather-viewing-container">
+  <header class="flex-row">
+    <span class="instaweather-title">
+      INSTAWEATHER
+    </span>
+    <div class="flex-row">
+      <span class="temperature-measurement flex-row"
+        [ngClass]="{'active-measurement': measurement === tempertureMeasurementOptions.C}"
+        (click)="changeMeasurement(tempertureMeasurementOptions.C)">
+        C
+      </span>
+      <span class="vertical-separator"></span>
+      <span class="temperature-measurement flex-row"
+        [ngClass]="{'active-measurement': measurement === tempertureMeasurementOptions.F}"
+        (click)="changeMeasurement(tempertureMeasurementOptions.F)">
+        F
+      </span>
+    </div>
+  </header>
+  <main class="flex-row">
+    <section class="flex-column">
+      <span class="current-city">
+        {{ currentCity }}
+      </span>
+      <span class="current-date">
+        {{ currentDate | date: 'EEEE MM, yyyy' }}
+      </span>
+    </section>
+  </main>
+</div>

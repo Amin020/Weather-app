@@ -1,0 +1,59 @@
+.weather-viewing-container {
+  height: 100%;
+  background-image: url("/assets/icons/weather-forecasting/background.png");
+  background-size: 100% 100%;
+  padding: 40px 9.5%;
+}
+
+header {
+  justify-content: space-between;
+  margin-bottom: 170px;
+
+  .instaweather-title {
+    font-weight: bold;
+    font-size: 36px;
+    color: #ffffff;
+  }
+
+  .temperature-measurement {
+    height: 100%;
+    width: 76px;
+    background-color: transparent;
+    font-weight: 600;
+    font-size: 24px;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    cursor: pointer;
+    transition: background 0.5s;
+
+    &.active-measurement {
+      background-color: rgba(255, 255, 255, 0.25);
+    }
+  }
+
+  .vertical-separator {
+    height: 100%;
+    border: 0.5px solid #ffffff;
+  }
+}
+
+main {
+  section {
+    .current-city,
+    .current-date {
+      font-weight: bold;
+      color: #ffffff;
+    }
+
+    .current-city {
+      font-size: 64px;
+      margin-bottom: 15px;
+    }
+
+    .current-date {
+      font-size: 20px;
+      margin-bottom: 15px;
+    }
+  }
+}

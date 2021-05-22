@@ -1,0 +1,54 @@
+/* You can add global styles to this file, and also import other style files */
+
+@font-face {
+  font-family: "WorkSans";
+  font-style: normal;
+  font-weight: 400;
+  src: url("/assets/fonts/WorkSans/static/WorkSans-Regular.ttf");
+  src:
+    /* Modern Browsers */ url("/assets/fonts/WorkSans/static/WorkSans-Regular.ttf")
+    format("truetype");
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+* {
+  font-family: WorkSans;
+  scrollbar-color: #ffffff transparent;
+  scrollbar-width: thin;
+}
+
+/* override scrollbar style */
+
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px transparent;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ffffff;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ffffff;
+}
+
+.flex-row {
+  display: flex !important;
+  flex-direction: row;
+}
+
+.flex-column {
+  display: flex !important;
+  flex-direction: column;
+}
