@@ -3,6 +3,7 @@
   background-image: url("/assets/icons/weather-forecasting/background.png");
   background-size: 100% 100%;
   padding: 40px 9.5%;
+  overflow: auto;
 }
 
 header {
@@ -33,15 +34,25 @@ header {
   }
 
   .vertical-separator {
-    height: 100%;
     border: 0.5px solid #ffffff;
   }
 }
 
+.font-awesome-icon-container {
+  font-size: 70px;
+  margin: 0;
+}
+
 main {
+  justify-content: space-between;
+
   section {
     .current-city,
-    .current-date {
+    .current-date,
+    .short-summary,
+    .current-temperature,
+    .high-low-temperature,
+    .summary-today {
       font-weight: bold;
       color: #ffffff;
     }
@@ -54,6 +65,26 @@ main {
     .current-date {
       font-size: 20px;
       margin-bottom: 15px;
+    }
+
+    .short-summary {
+      font-size: 30px;
+    }
+
+    .current-temperature {
+      font-size: 144px;
+      margin-inline-start: auto;
+    }
+
+    .high-low-temperature {
+      font-weight: 400 !important;
+      font-size: 48px;
+      margin-bottom: 20px;
+      margin-inline-start: auto;
+    }
+
+    .summary-today {
+      font-size: 24px;
     }
   }
 }

@@ -20,10 +20,32 @@
   <main class="flex-row">
     <section class="flex-column">
       <span class="current-city">
-        {{ currentCity }}
+        {{ currentLocation }}
       </span>
       <span class="current-date">
-        {{ currentDate | date: 'EEEE MM, yyyy' }}
+        {{ currentDate | date: 'EEEE dd, yyyy' }}
+      </span>
+      <span [ngSwitch]="weatherObj.currentTemperatureIcon">
+        <svg-icon *ngSwitchCase="temperatureIcons.cloudy" src="assets/icons/weather-forecasting/sunny-icon.svg">
+        </svg-icon>
+        <svg-icon *ngSwitchDefault src="assets/icons/weather-forecasting/cloudy-icon.svg"></svg-icon>
+      </span>
+
+      <span class="short-summary">
+        {{ weatherObj.shortSummary }}
+      </span>
+    </section>
+    <section class="flex-column">
+      <span class="current-temperature flex-row">
+        {{ weatherObj.currentTemperature }}
+        <span> &#176; </span>
+      </span>
+      <span class="high-low-temperature flex-row">
+        {{ weatherObj.highTemperature }} <span> &#176; </span> /
+        {{ weatherObj.lowTemperature }} <span> &#176; </span>
+      </span>
+      <span class="summary-today">
+        {{ weatherObj.summaryToday }}
       </span>
     </section>
   </main>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { TempertureMeasurementOptions } from 'src/app/core/models/Weather-Forecasting.model';
+import { WeatherController } from 'src/app/core/controllers/weather-controller';
+import { TemperatureIcons, TempertureMeasurementOptions, WeatherForecastingModel } from 'src/app/core/models/Weather-Forecasting.model';
 
 @Component({
   selector: 'app-weather-viewing',
@@ -8,22 +9,48 @@ import { TempertureMeasurementOptions } from 'src/app/core/models/Weather-Foreca
 })
 export class WeatherViewingComponent implements OnInit {
 
+  weatherObj = new WeatherForecastingModel();
+  temperatureIcons = TemperatureIcons;
   tempertureMeasurementOptions = TempertureMeasurementOptions;
   measurement = TempertureMeasurementOptions.F;
-  currentCity = "New Cairo";
+  currentLocation = "";
   currentDate = new Date();
 
-  constructor() { }
+  constructor(
+    private weatherController: WeatherController
+  ) { }
 
-  ngOnInit() {
-    this.getWeatherData();
+  ngOnInit(): void {
+    this.getLatAndLang();
   }
 
-  private getWeatherData(): void {
-
+  private getLatAndLang(): void {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(this.getWeatherData);
+      navigator.geolocation.getCurrentPosition(this.getCurrentLocation);
+    } else {
+    }
   }
 
-  changeMeasurement(newMeasurements: TempertureMeasurementOptions): void {
+  private getWeatherData = (position: any): void => {
+    const lat = position.coords.latitude;
+    const long = position.coords.longitude;
+    this.weatherController.getWeatherData(lat, long, weatherData => {
+      this.weatherObj = weatherData;
+    }, error => {
+    });
+  }
+
+  private getCurrentLocation = (position: any): void => {
+    const lat = position.coords.latitude;
+    const long = position.coords.longitude;
+    this.weatherController.getCurrentLocation(lat, long, currentLocation => {
+      this.currentLocation = currentLocation.name;
+    }, error => {
+    });
+  }
+
+  public changeMeasurement(newMeasurements: TempertureMeasurementOptions): void {
     this.measurement = newMeasurements;
   }
 
