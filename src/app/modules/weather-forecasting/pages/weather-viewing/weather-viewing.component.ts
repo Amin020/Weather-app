@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { WeatherController } from 'src/app/core/controllers/weather-controller';
 import { TemperatureIcons, TempertureMeasurementOptions, WeatherForecastingModel } from 'src/app/core/models/Weather-Forecasting.model';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-weather-viewing',
@@ -9,6 +10,8 @@ import { TemperatureIcons, TempertureMeasurementOptions, WeatherForecastingModel
 })
 export class WeatherViewingComponent implements OnInit {
 
+  isLoading = true;
+  error = true;
   weatherObj = new WeatherForecastingModel();
   temperatureIcons = TemperatureIcons;
   tempertureMeasurementOptions = TempertureMeasurementOptions;
@@ -17,6 +20,7 @@ export class WeatherViewingComponent implements OnInit {
   currentDate = new Date();
 
   constructor(
+    private spinner: NgxSpinnerService,
     private weatherController: WeatherController
   ) { }
 
@@ -29,15 +33,25 @@ export class WeatherViewingComponent implements OnInit {
       navigator.geolocation.getCurrentPosition(this.getWeatherData);
       navigator.geolocation.getCurrentPosition(this.getCurrentLocation);
     } else {
+      alert("Browser not support location!");
     }
   }
 
   private getWeatherData = (position: any): void => {
     const lat = position.coords.latitude;
     const long = position.coords.longitude;
+    this.spinner.show();
+    this.isLoading = true;
+    this.error = false;
     this.weatherController.getWeatherData(lat, long, weatherData => {
       this.weatherObj = weatherData;
+      this.isLoading = false;
+      this.spinner.hide();
+      this.error = false;
     }, error => {
+      this.spinner.hide();
+      this.isLoading = false;
+      this.error = true;
     });
   }
 

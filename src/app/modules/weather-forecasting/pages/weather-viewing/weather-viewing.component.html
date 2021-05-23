@@ -1,54 +1,64 @@
 <div class="weather-viewing-container">
-  <header class="flex-row">
-    <span class="instaweather-title">
-      INSTAWEATHER
-    </span>
-    <div class="flex-row">
-      <span class="temperature-measurement flex-row"
-        [ngClass]="{'active-measurement': measurement === tempertureMeasurementOptions.C}"
-        (click)="changeMeasurement(tempertureMeasurementOptions.C)">
-        C
+  <ng-container *ngIf="!isLoading && !error; else loadingErrorTemp">
+    <header class="flex-row">
+      <span class="instaweather-title">
+        INSTAWEATHER
       </span>
-      <span class="vertical-separator"></span>
-      <span class="temperature-measurement flex-row"
-        [ngClass]="{'active-measurement': measurement === tempertureMeasurementOptions.F}"
-        (click)="changeMeasurement(tempertureMeasurementOptions.F)">
-        F
-      </span>
-    </div>
-  </header>
-  <main class="flex-row">
-    <section class="flex-column">
-      <span class="current-city">
-        {{ currentLocation }}
-      </span>
-      <span class="current-date">
-        {{ currentDate | date: 'EEEE dd, yyyy' }}
-      </span>
-      <span [ngSwitch]="weatherObj.currentTemperatureIcon">
-        <svg-icon class="temp-icon" *ngSwitchCase="temperatureIcons.cloudy"
-          src="assets/icons/weather-forecasting/cloudy-icon.svg">
-        </svg-icon>
-        <svg-icon class="temp-icon" *ngSwitchDefault src="assets/icons/weather-forecasting/sunny-icon.svg"></svg-icon>
-      </span>
+      <div class="flex-row">
+        <span class="temperature-measurement flex-row"
+          [ngClass]="{'active-measurement': measurement === tempertureMeasurementOptions.C}"
+          (click)="changeMeasurement(tempertureMeasurementOptions.C)">
+          C
+        </span>
+        <span class="vertical-separator"></span>
+        <span class="temperature-measurement flex-row"
+          [ngClass]="{'active-measurement': measurement === tempertureMeasurementOptions.F}"
+          (click)="changeMeasurement(tempertureMeasurementOptions.F)">
+          F
+        </span>
+      </div>
+    </header>
+    <main class="flex-row">
+      <section class="flex-column">
+        <span class="current-city">
+          {{ currentLocation }}
+        </span>
+        <span class="current-date">
+          {{ currentDate | date: 'EEEE dd, yyyy' }}
+        </span>
+        <span [ngSwitch]="weatherObj.currentTemperatureIcon">
+          <svg-icon class="temp-icon" *ngSwitchCase="temperatureIcons.cloudy"
+            src="assets/icons/weather-forecasting/cloudy-icon.svg">
+          </svg-icon>
+          <svg-icon class="temp-icon" *ngSwitchDefault src="assets/icons/weather-forecasting/sunny-icon.svg"></svg-icon>
+        </span>
 
-      <span class="short-summary">
-        {{ weatherObj.shortSummary }}
-      </span>
-    </section>
-    <section class="flex-column">
-      <span class="current-temperature flex-row">
-        {{ weatherObj.currentTemperature }}
-        <span> &#176; </span>
-      </span>
-      <span class="high-low-temperature flex-row">
-        {{ weatherObj.highTemperature }} <span> &#176; </span> /
-        {{ weatherObj.lowTemperature }} <span> &#176; </span>
-      </span>
-      <span class="summary-today">
-        {{ weatherObj.summaryToday }}
-      </span>
-    </section>
-  </main>
-  <app-hourly-daily-weather-forecast [weatherObj]="weatherObj"></app-hourly-daily-weather-forecast>
+        <span class="short-summary">
+          {{ weatherObj.shortSummary }}
+        </span>
+      </section>
+      <section class="flex-column">
+        <span class="current-temperature flex-row">
+          {{ weatherObj.currentTemperature }}
+          <span> &#176; </span>
+        </span>
+        <span class="high-low-temperature flex-row">
+          {{ weatherObj.highTemperature }} <span> &#176; </span> /
+          {{ weatherObj.lowTemperature }} <span> &#176; </span>
+        </span>
+        <span class="summary-today">
+          {{ weatherObj.summaryToday }}
+        </span>
+      </section>
+    </main>
+    <app-hourly-daily-weather-forecast [weatherObj]="weatherObj"></app-hourly-daily-weather-forecast>
+  </ng-container>
+  <ng-template #loadingErrorTemp>
+    <ngx-spinner *ngIf="isLoading" bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="ball-beat"
+      [fullScreen]="true">
+      <p style="color: #ffffff"> Loading... </p>
+    </ngx-spinner>
+    <app-error *ngIf="error"></app-error>
+  </ng-template>
+
 </div>

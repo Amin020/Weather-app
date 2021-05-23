@@ -1,0 +1,17 @@
+.error-container {
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.error-title {
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  color: #ffffff;
+  margin-bottom: 8px;
+
+  p {
+    margin-bottom: 0;
+  }
+}

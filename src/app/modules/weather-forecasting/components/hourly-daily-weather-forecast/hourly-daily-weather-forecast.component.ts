@@ -18,7 +18,6 @@ export class HourlyDailyWeatherForecastComponent implements OnInit {
 
   ngOnInit() {
     this.activeTemperatureData = this.weatherObj.hourlyTemperatureData;
-    console.log("ActiveTemperatureData: ", this.activeTemperatureData);
   }
 
   public changeActiveTab(newTabValue: TemperatureTabs): void {
