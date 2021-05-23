@@ -3,6 +3,7 @@
   background-image: url("/assets/icons/weather-forecasting/background.png");
   background-size: 100% 100%;
   padding: 40px 9.5%;
+  box-sizing: border-box;
   overflow: auto;
 }
 
@@ -45,6 +46,7 @@ header {
 
 main {
   justify-content: space-between;
+  margin-bottom: 65px;
 
   section {
     .current-city,

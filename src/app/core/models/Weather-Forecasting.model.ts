@@ -8,6 +8,10 @@ export enum TemperatureIcons {
     sunny = "clear-day"
 }
 
+export enum TemperatureTabs {
+    hourly = "Hourly",
+    daily = "Daily"
+}
 export class WeatherForecastingModel {
 
     shortSummary: string;
@@ -16,10 +20,18 @@ export class WeatherForecastingModel {
     lowTemperature: number;
     summaryToday: string;
     currentTemperatureIcon: string;
+    hourlyTemperatureData: Array<TemperatureData>;
+    dailyTemperatureData: Array<TemperatureData>;
 
     constructor() {
         this.shortSummary = "";
         this.summaryToday = "";
     }
 
+}
+
+export interface TemperatureData {
+    title: Date;
+    icon: string;
+    value: number;
 }

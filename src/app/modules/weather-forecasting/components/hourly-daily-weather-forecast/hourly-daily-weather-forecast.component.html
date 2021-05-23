@@ -1,0 +1,35 @@
+<div class="hourly-daily-weather-forecast-container">
+  <header>
+    <span class="tab" [ngClass]="{'active-tab': activeTab === temperatureTabs.hourly}"
+      (click)="changeActiveTab(temperatureTabs.hourly)">
+      Hourly
+    </span>
+    <span class="tab" [ngClass]="{'active-tab': activeTab === temperatureTabs.daily}"
+      (click)="changeActiveTab(temperatureTabs.daily)">
+      Daily
+    </span>
+  </header>
+  <main class="flex-row">
+    <section class="flex-column" *ngFor="let temperatureDataItem of activeTemperatureData; let first = first">
+      <span class="temperature-date-title">
+        <ng-container *ngIf="first">
+          Now
+        </ng-container>
+        <ng-container *ngIf="!first && activeTab === temperatureTabs.hourly">
+          {{ temperatureDataItem.title | date: 'h:mm aa' }}
+        </ng-container>
+        <ng-container *ngIf="!first && activeTab === temperatureTabs.daily">
+          {{ temperatureDataItem.title | date: 'EE' }}
+        </ng-container>
+      </span>
+      <span [ngSwitch]="weatherObj.currentTemperatureIcon">
+        <svg-icon *ngSwitchCase="temperatureIcons.cloudy" src="assets/icons/weather-forecasting/cloudy-icon.svg">
+        </svg-icon>
+        <svg-icon *ngSwitchDefault src="assets/icons/weather-forecasting/sunny-icon.svg"></svg-icon>
+      </span>
+      <span class="temperature-value flex-row">
+        {{ temperatureDataItem.value }} <span> &#176; </span>
+      </span>
+    </section>
+  </main>
+</div>
