@@ -22,10 +22,11 @@
           {{ temperatureDataItem.title | date: 'EE' }}
         </ng-container>
       </span>
-      <span [ngSwitch]="weatherObj.currentTemperatureIcon">
-        <svg-icon *ngSwitchCase="temperatureIcons.cloudy" src="assets/icons/weather-forecasting/cloudy-icon.svg">
+      <span [ngSwitch]="temperatureDataItem.icon">
+        <svg-icon class="temp-icon" *ngSwitchCase="temperatureIcons.cloudy"
+          src="assets/icons/weather-forecasting/cloudy-icon.svg">
         </svg-icon>
-        <svg-icon *ngSwitchDefault src="assets/icons/weather-forecasting/sunny-icon.svg"></svg-icon>
+        <svg-icon class="temp-icon" *ngSwitchDefault src="assets/icons/weather-forecasting/sunny-icon.svg"></svg-icon>
       </span>
       <span class="temperature-value flex-row">
         {{ temperatureDataItem.value }} <span> &#176; </span>

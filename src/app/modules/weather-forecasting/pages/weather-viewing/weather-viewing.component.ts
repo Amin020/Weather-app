@@ -51,7 +51,42 @@ export class WeatherViewingComponent implements OnInit {
   }
 
   public changeMeasurement(newMeasurements: TempertureMeasurementOptions): void {
+    if (this.measurement !== newMeasurements) {
+      this.convertTemperatureMeasurement(newMeasurements);
+    }
+  }
+
+  private convertTemperatureMeasurement(newMeasurements: TempertureMeasurementOptions): void {
     this.measurement = newMeasurements;
+    if (this.measurement === TempertureMeasurementOptions.F) {
+      this.convertCelciusToFehrenheit();
+    } else if (this.measurement === TempertureMeasurementOptions.C) {
+      this.convertFehrenheitToCelcius();
+    }
+  }
+
+  private convertCelciusToFehrenheit(): void {
+    this.weatherObj.currentTemperature = Math.round((this.weatherObj.currentTemperature * 1.8) + 32);
+    this.weatherObj.highTemperature = Math.round((this.weatherObj.highTemperature * 1.8) + 32);
+    this.weatherObj.lowTemperature = Math.round((this.weatherObj.lowTemperature * 1.8) + 32);
+    this.weatherObj.hourlyTemperatureData.forEach(hourlyTemperatureItem => {
+      hourlyTemperatureItem.value = Math.round((hourlyTemperatureItem.value * 1.8) + 32);
+    });
+    this.weatherObj.dailyTemperatureData.forEach(dailyTemperatureItem => {
+      dailyTemperatureItem.value = Math.round((dailyTemperatureItem.value * 1.8) + 32);
+    });
+  }
+
+  private convertFehrenheitToCelcius(): void {
+    this.weatherObj.currentTemperature = Math.round((this.weatherObj.currentTemperature - 32) / 1.8);
+    this.weatherObj.highTemperature = Math.round((this.weatherObj.highTemperature - 32) / 1.8);
+    this.weatherObj.lowTemperature = Math.round((this.weatherObj.lowTemperature - 32) / 1.8);
+    this.weatherObj.hourlyTemperatureData.forEach(hourlyTemperatureItem => {
+      hourlyTemperatureItem.value = Math.round((hourlyTemperatureItem.value - 32) / 1.8);
+    });
+    this.weatherObj.dailyTemperatureData.forEach(dailyTemperatureItem => {
+      dailyTemperatureItem.value = Math.round((dailyTemperatureItem.value - 32) / 1.8);
+    });
   }
 
 }
