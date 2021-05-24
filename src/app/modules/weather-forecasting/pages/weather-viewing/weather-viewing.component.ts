@@ -11,7 +11,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 export class WeatherViewingComponent implements OnInit {
 
   isLoading = true;
-  error = true;
+  error = false;
   weatherObj = new WeatherForecastingModel();
   temperatureIcons = TemperatureIcons;
   tempertureMeasurementOptions = TempertureMeasurementOptions;
@@ -29,6 +29,7 @@ export class WeatherViewingComponent implements OnInit {
   }
 
   private getLatAndLang(): void {
+    this.spinner.show();
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(this.getWeatherData);
       navigator.geolocation.getCurrentPosition(this.getCurrentLocation);

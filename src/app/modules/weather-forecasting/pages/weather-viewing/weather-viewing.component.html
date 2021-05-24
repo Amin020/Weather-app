@@ -26,7 +26,7 @@
         <span class="current-date">
           {{ currentDate | date: 'EEEE dd, yyyy' }}
         </span>
-        <span [ngSwitch]="weatherObj.currentTemperatureIcon">
+        <span class="temp-icon-container" [ngSwitch]="weatherObj.currentTemperatureIcon">
           <svg-icon class="temp-icon" *ngSwitchCase="temperatureIcons.cloudy"
             src="assets/icons/weather-forecasting/cloudy-icon.svg">
           </svg-icon>

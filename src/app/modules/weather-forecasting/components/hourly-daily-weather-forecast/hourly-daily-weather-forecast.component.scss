@@ -50,6 +50,11 @@ main {
       font-size: 36px;
       color: #ffffff;
       margin-top: 25px;
+
+      @media screen and (max-width: 992px) {
+        font-size: 28px;
+        margin-top: 15px;
+      }
     }
   }
 }
