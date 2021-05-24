@@ -20,7 +20,7 @@ export class WeatherMapper {
     private getMappedTemperatureData(temperatureDataListRes: Array<any>, temperatureType: TemperatureTabs): Array<TemperatureData> {
         const mappedTemperatureData = new Array<TemperatureData>();
         if (temperatureDataListRes) {
-            for (let i = 0; i < temperatureDataListRes.length; i++) {
+            for (let i = 0; i < temperatureDataListRes.slice(0, 24).length; i++) {
                 const temperatureDataItem = temperatureDataListRes[i];
                 mappedTemperatureData.push({
                     title: new Date(temperatureDataItem.time * 1000),
