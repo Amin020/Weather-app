@@ -1,0 +1,14 @@
+{
+    "/forecast/*": {
+        "target": "https://api.darksky.net",
+        "secure": false,
+        "logLevel": "debug",
+        "changeOrigin": true
+    },
+    "/rgeo/*": {
+        "target": "https://darksky.net",
+        "secure": false,
+        "logLevel": "debug",
+        "changeOrigin": true
+    }
+}
