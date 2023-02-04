@@ -1,0 +1,23 @@
+[debug] [2023-02-04T00:06:23.851Z] ----------------------------------------------------------------------
+[debug] [2023-02-04T00:06:23.857Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Amin\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2023-02-04T00:06:23.858Z] CLI Version:   11.22.0
+[debug] [2023-02-04T00:06:23.858Z] Platform:      win32
+[debug] [2023-02-04T00:06:23.859Z] Node Version:  v16.13.0
+[debug] [2023-02-04T00:06:23.860Z] Time:          Sat Feb 04 2023 02:06:23 GMT+0200 (توقيت شرق أوروبا الرسمي)
+[debug] [2023-02-04T00:06:23.861Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-02-04T00:06:23.985Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-02-04T00:06:23.985Z] > authorizing via signed-in user (mohamedmostafaamin020@gmail.com)
+[debug] [2023-02-04T00:06:23.986Z] [iam] checking project weather-app-2ffbb for permissions ["firebase.projects.get","firebasedatabase.instances.update","firebasehosting.sites.update"]
+[debug] [2023-02-04T00:06:23.991Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/weather-app-2ffbb:testIamPermissions [none]
+[debug] [2023-02-04T00:06:23.992Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/weather-app-2ffbb:testIamPermissions x-goog-quota-user=projects/weather-app-2ffbb
+[debug] [2023-02-04T00:06:23.992Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/weather-app-2ffbb:testIamPermissions {"permissions":["firebase.projects.get","firebasedatabase.instances.update","firebasehosting.sites.update"]}
+[debug] [2023-02-04T00:06:45.148Z] [iam] error while checking permissions, command may fail: FirebaseError: Failed to make request to https://cloudresourcemanager.googleapis.com/v1/projects/weather-app-2ffbb:testIamPermissions
+[debug] [2023-02-04T00:06:45.156Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/weather-app-2ffbb [none]
+[debug] [2023-02-04T00:06:45.173Z] Failed to make request to https://firebase.googleapis.com/v1beta1/projects/weather-app-2ffbb
+[debug] [2023-02-04T00:06:50.193Z] Error: Timed out.
+    at Timeout._onTimeout (C:\Users\Amin\AppData\Roaming\npm\node_modules\firebase-tools\lib\utils.js:253:49)
+    at listOnTimeout (node:internal/timers:557:17)
+    at processTimers (node:internal/timers:500:7)
+[error] 
+[error] Error: An unexpected error has occurred.

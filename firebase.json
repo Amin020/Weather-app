@@ -1,0 +1,31 @@
+{
+  "database": {
+    "rules": "database.rules.json"
+  },
+  "hosting": {
+    "public": "dist/robusta-weather-app",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ],
+    "redirects": [
+      {
+        "source": "/forecast/*/:path*",
+        "destination": "https://api.darksky.net/forecast/:path",
+        "type": 301
+      },
+      {
+        "source": "/rgeo/:path*",
+        "destination": "https://darksky.net/rgeo/:path",
+        "type": 301
+      }
+    ]
+  }
+}
